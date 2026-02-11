@@ -1,0 +1,88 @@
+{
+    "pathogenicity_thresholds": {
+        "critical": 80,
+        "high_risk": 60,
+        "moderate_risk": 40,
+        "description": "Progi patogenności zgodne ze standardami klinicznymi ACMG/AMP"
+    },
+    "f1_score_thresholds": {
+        "excellent": 0.7,
+        "acceptable": 0.5,
+        "description": "Progi jakości modeli ML dla zastosowań klinicznych"
+    },
+    "visualization_colors": {
+        "critical_color": "#f44336",
+        "moderate_color": "#ff9800", 
+        "safe_color": "#4caf50",
+        "pathogenic_color": "#ff7f7f",
+        "benign_color": "#7fbf7f",
+        "description": "Paleta kolorów zgodna z wytycznymi wizualizacji medycznych"
+    },
+    "analysis_parameters": {
+        "min_mutations_for_hotspot": 2,
+        "hotspot_proximity_distance": 5,
+        "min_publications_threshold": 3,
+        "top_genes_limit": 3,
+        "top_mutations_limit": 3,
+        "kmer_size": 3,
+        "description": "Parametry analizy statystycznej i NCBI"
+    },
+    "clinical_interpretation": {
+        "critical_status": "KRYTYCZNY",
+        "hotspot_status": "HOT-SPOT",
+        "suspicious_status": "PODEJRZANY",
+        "safe_status": "BEZPIECZNY",
+        "description": "Standardowe etykiety klasyfikacji klinicznej"
+    },
+    "plot_settings": {
+        "figure_sizes": {
+            "standard": [8, 6],
+            "medium": [10, 6],
+            "large": [12, 10],
+            "xlarge": [18, 12]
+        },
+        "dpi": 300,
+        "bbox_inches": "tight",
+        "pie_chart": {
+            "start_angle": 90,
+            "font_size": 11
+        },
+        "grid_alpha": 0.3,
+        "line_alpha": 0.5,
+        "linewidth": 3,
+        "description": "Zaawansowane ustawienia wykresów matplotlib"
+    },
+    "ml_parameters": {
+        "test_size": 0.2,
+        "random_state": 42,
+        "max_iterations": 1000,
+        "n_estimators": 100,
+        "max_depth": 10,
+        "n_splits_cv": 5,
+        "class_weight": "balanced",
+        "n_jobs": -1,
+        "probability": true,
+        "shuffle": true,
+        "description": "Parametry zaawansowanych modeli ML (LR, RF, SVM)"
+    },
+    "contact_settings": {
+        "default_email": "analysis@example.com",
+        "organization": "Advanced DNA Research Lab",
+        "description": "Kontakt dla zapytań NCBI i raportów zaawansowanych"
+    },
+    "report_headers": {
+        "main_analysis": "=== PEŁNA ZAAWANSOWANA ANALIZA MUTACJI DNA ===",
+        "data_exploration": "=== EKSPLORACJA ===",
+        "ncbi_analysis": "=== ANALIZA 3 NAJCZĘŚCIEJ MUTUJĄCYCH GENÓW W NCBI ===",
+        "hotspot_analysis": "=== ANALIZA HOTSPOTÓW MUTACYJNYCH (PER GEN) ===",
+        "advanced_features": "=== TWORZENIE CECH ZAAWANSOWANYCH ===",
+        "cross_validation": "=== WALIDACJA KRZYŻOWA MODELI ===",
+        "final_results": "=== WYNIKI NA ZBIORZE TESTOWYM ===",
+        "description": "Nagłówki dla zaawansowanej analizy"
+    },
+    "file_paths": {
+        "results_dir": "results/results_advanced",
+        "data_file": "data/data_rare/data_DNA_mutations.csv",
+        "description": "Ścieżki do katalogów i plików zaawansowanej analizy"
+    }
+}

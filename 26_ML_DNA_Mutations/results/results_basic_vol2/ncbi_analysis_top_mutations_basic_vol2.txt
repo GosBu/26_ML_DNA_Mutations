@@ -1,0 +1,9 @@
+NCBI ANALYSIS - TOP MUTATIONS AND GENES (BASIC VOL2)
+==================================================
+
+TOP 3 PATHOGENIC MUTATIONS ANALYSIS RESULTS:
+----------------------------------------
+No NCBI results (Biopython unavailable or connection error)
+
+==================================================
+Analysis generated automatically by basic_vol2 script

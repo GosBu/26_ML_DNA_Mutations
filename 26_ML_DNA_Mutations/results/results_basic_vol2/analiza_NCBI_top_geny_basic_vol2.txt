@@ -1,0 +1,26 @@
+ANALIZA NCBI - TOP MUTACJE I GENY (BASIC VOL2)
+==================================================
+
+WYNIKI ANALIZY TOP 3 MUTACJI PATOGENNYCH:
+----------------------------------------
+Gen: BRCA1
+Mutacja: A>T
+Wystąpienia w danych: 4
+Publikacje PubMed: 0
+Informacje o chorobach: Znaleziono 5 publikacji o chorobach
+
+Gen: MYH7
+Mutacja: C>A
+Wystąpienia w danych: 3
+Publikacje PubMed: 0
+Informacje o chorobach: Znaleziono 5 publikacji o chorobach
+
+Gen: BRCA1
+Mutacja: T>C
+Wystąpienia w danych: 3
+Publikacje PubMed: 0
+Informacje o chorobach: Znaleziono 5 publikacji o chorobach
+
+
+==================================================
+Analiza wygenerowana automatycznie przez skrypt basic_vol2

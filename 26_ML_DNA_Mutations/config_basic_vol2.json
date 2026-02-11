@@ -1,0 +1,81 @@
+{
+    "pathogenicity_thresholds": {
+        "high_risk": 50,
+        "moderate_risk": 30,
+        "mutation_risk_high": 60,
+        "mutation_risk_moderate": 40,
+        "description": "Progi ryzyka dla analizy podstawowej (uproszczone względem ACMG)"
+    },
+    "visualization_colors": {
+        "pathogenic_color": "#ff7f7f",
+        "benign_color": "#7fbf7f",
+        "high_risk_color": "red",
+        "moderate_risk_color": "orange", 
+        "low_risk_color": "green",
+        "safe_color": "lightblue",
+        "description": "Uproszczona paleta kolorów dla analizy podstawowej"
+    },
+    "analysis_parameters": {
+        "min_mutations_for_analysis": 3,
+        "hotspot_threshold": 0.5,
+        "top_mutations_limit": 8,
+        "top_positions_limit": 15,
+        "description": "Parametry dla analizy podstawowej DNA"
+    },
+    "chart_settings": {
+        "pie_chart_colors": ["#ff7f7f", "#7fbf7f"],
+        "gc_boxplot_colors": ["lightblue", "lightgreen", "lightcoral", "lightyellow"],
+        "bar_alpha": 0.7,
+        "bar_width": 0.4,
+        "description": "Ustawienia wizualne wykresów"
+    },
+    "plot_settings": {
+        "figure_sizes": {
+            "standard": [8, 6],
+            "medium": [10, 6],
+            "large": [12, 8],
+            "xlarge": [18, 12]
+        },
+        "dpi": 300,
+        "bbox_inches": "tight",
+        "pie_chart": {
+            "start_angle": 90,
+            "font_size": 10
+        },
+        "grid_alpha": 0.3,
+        "line_alpha": 0.5,
+        "description": "Standardowe ustawienia wykresów matplotlib"
+    },
+    "ml_parameters": {
+        "test_size": 0.3,
+        "random_state": 42,
+        "max_iterations": 800,
+        "solver": "liblinear",
+        "class_weight": "balanced",
+        "description": "Parametry modeli uczenia maszynowego"
+    },
+    "nucleotide_mapping": {
+        "A": [1, 0, 0, 0],
+        "C": [0, 1, 0, 0],
+        "G": [0, 0, 1, 0],
+        "T": [0, 0, 0, 1],
+        "description": "One-hot encoding dla nukleotydów DNA"
+    },
+    "contact_settings": {
+        "default_email": "analysis@example.com",
+        "organization": "DNA Analysis Lab",
+        "description": "Kontakt dla zapytań NCBI i raportów"
+    },
+    "report_headers": {
+        "data_exploration": "=== EKSPLORACJA DANYCH ===",
+        "ncbi_analysis": "=== ANALIZA TOP 3 MUTACJI W NCBI ===",
+        "project_summary": "PODSUMOWANIE PROJEKTU (BASIC VERSION)",
+        "plot_creation": "=== TWORZENIE WYKRESÓW ===",
+        "description": "Standardowe nagłówki dla raportów"
+    },
+    "file_paths": {
+        "results_dir": "results/results_basic_vol2",
+        "data_path": "/Users/mago/Desktop/Projekty VS/26_ML_DNA_Mutations/data/data_rare/data_DNA_mutations.csv",
+        "description": "Ścieżki do katalogów i plików danych"
+    }
+}

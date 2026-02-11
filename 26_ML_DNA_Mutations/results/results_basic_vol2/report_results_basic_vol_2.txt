@@ -1,0 +1,56 @@
+ANALIZA: BASIC_VOL2 — RAPORT
+====================================================
+Data: 2026-02-11
+
+KRÓTKIE PODSUMOWANIE
+--------------------
+`basic_vol2` to przyspieszony i interpretowalny pipeline z Logistic Regression, zaprojektowany jako baseline do priorytetyzacji wariantów. Na zbiorze 100 próbek model osiągnął umiarkowane wyniki; kluczowe obserwacje i rekomendacje poniżej.
+
+I. Eksploracja danych (EDA) — kluczowe punkty
+-------------------------------------------
+- Liczba próbek: 100
+- Geny: BRCA1 (29), MYH7 (27), TP53 (26), CFTR (18)
+- Patogenne mutacje (liczby): BRCA1 14, MYH7 11, TP53 10, CFTR 6
+- Sekwencje: długość ~50 nt; brak braków (no missing values)
+- Hotspoty: główne pozycje: 6, 12, 34, 39 (kandydaci funkcjonalni)
+- Top mutacje (dane): BRCA1 A>T (4x), MYH7 C>A (3x), BRCA1 T>C (3x)
+- Kodowanie cech: One-hot sekwencji + cechy biochemiczne (GC content, transitions)
+
+II. Wyniki modelu (`basic_vol2`) — streszczenie
+-----------------------------------------------
+- Model: Logistic Regression (class_weight='balanced')
+- Podział 60/40 (baseline):
+  • Accuracy: 0.600
+  • F1 (pathogenic): 0.50
+  • ROC AUC: ~0.628–0.644 (różne raporty: 0.628/0.644)
+- Eksperyment 70/30: poprawa Accuracy do ~0.667, Precision ~0.58
+- Cross-validation (5-fold): duża zmienność foldów; średnie AUC ~0.59
+  (przykładowe AUC: 0.333, 0.594, 0.760, 0.677, 0.594)
+
+Interpretacja: model działa jako szybki baseline — dobry do wstępnej selekcji wariantów, lecz niestabilny przy małej liczbie próbek.
+
+III. Analiza NCBI (automatyczna)
+--------------------------------
+- Top mutacje mają niską liczbę bezpośrednich PubMed hits według automatu (skrypt zwraca 0 dla konkretnych mutacji), jednak geny (BRCA1, MYH7, TP53) mają powiązane publikacje.
+- Uwaga: Entrez wymaga poprawnego `email` i może zwracać różne wyniki w zależności od limitów i cache.
+
+IV. Najważniejsze wnioski (skrócone)
+------------------------------------
+- BRCA1 wyróżnia się liczebnością mutacji i najwyższym odsetkiem patogennych (~48%).
+- Model `basic_vol2` ma relatywnie wyższą Accuracy i ROC AUC niż `advanced`, lecz niższe F1 — oznacza to gorszy balans precision/recall.
+- Z powodu małego datasetu wyniki są niestabilne; cross-validation pokazuje duże rozbieżności między foldami.
+
+V. Rekomendacje (priorytetowe dla `basic_vol2`)
+-----------------------------------------------
+1. Zwiększyć zbiór treningowy (najważniejsze). Cel: >1000 próbek.
+2. Użyć stratified k-fold i stabilizować wyniki (więcej foldów, repeat CV).
+3. Dodać cechy kontekstowe (k-mery, conservation scores, CpG context).
+4. Przetestować modele drzewiaste (Random Forest/XGBoost) oraz ensemble z LogReg.
+5. Dla NCBI: użyć prawdziwego emaila w Entrez, cache wyników i limitować zapytania.
+
+VI. Krótkie porównanie do `advanced` (istotne punkty)
+---------------------------------------------------
+- `basic_vol2` (One-hot + LogReg): prosty, szybki, lepsza Accuracy; dobry do eksploracji.
+- `advanced` (K-mer + SVM): lepszy F1 (lepszy balans), wymaga więcej danych i strojenia.
+- Sugerowane: eksperyment z połączeniem cech (One-hot + k-mer) oraz ensemble modeli.
+

@@ -1,0 +1,70 @@
+=== ANALIZA NCBI - TOP 3 NAJCZĘŚCIEJ MUTUJĄCE GENY (ADVANCED) ===
+
+Data analizy: 2026-02-08 23:33:00
+
+1. GEN: BRCA1
+==================================================
+Statystyki ogólne:
+   • Łączna liczba mutacji: 29
+   • Mutacje patogenne: 14
+   • Procent patogenności: 48.3%
+
+Literatura medyczna (NCBI):
+   • 5 publikacji
+
+Najczęstsze pozycje mutacji:
+   • Pozycja 6: 4 mutacji
+   • Pozycja 38: 3 mutacji
+   • Pozycja 39: 2 mutacji
+
+Przykładowe mutacje w PubMed:
+   • Pozycja 12 (A>T): 0 artykułów - pathogenic
+   • Pozycja 21 (A>T): 0 artykułów - pathogenic
+   • Pozycja 37 (C>A): 0 artykułów - pathogenic
+
+======================================================================
+
+2. GEN: MYH7
+==================================================
+Statystyki ogólne:
+   • Łączna liczba mutacji: 27
+   • Mutacje patogenne: 11
+   • Procent patogenności: 40.7%
+
+Literatura medyczna (NCBI):
+   • 5 publikacji
+
+Najczęstsze pozycje mutacji:
+   • Pozycja 12: 4 mutacji
+   • Pozycja 7: 4 mutacji
+   • Pozycja 8: 2 mutacji
+
+Przykładowe mutacje w PubMed:
+   • Pozycja 8 (C>A): 0 artykułów - pathogenic
+   • Pozycja 13 (G>C): 0 artykułów - pathogenic
+   • Pozycja 12 (T>G): 0 artykułów - pathogenic
+
+======================================================================
+
+3. GEN: TP53
+==================================================
+Statystyki ogólne:
+   • Łączna liczba mutacji: 26
+   • Mutacje patogenne: 10
+   • Procent patogenności: 38.5%
+
+Literatura medyczna (NCBI):
+   • 5 publikacji
+
+Najczęstsze pozycje mutacji:
+   • Pozycja 36: 2 mutacji
+   • Pozycja 23: 2 mutacji
+   • Pozycja 11: 2 mutacji
+
+Przykładowe mutacje w PubMed:
+   • Pozycja 21 (G>C): 0 artykułów - benign
+   • Pozycja 36 (G>T): 0 artykułów - pathogenic
+   • Pozycja 36 (A>C): 0 artykułów - pathogenic
+
+======================================================================
+

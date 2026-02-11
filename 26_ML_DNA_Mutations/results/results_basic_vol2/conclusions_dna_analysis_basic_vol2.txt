@@ -1,0 +1,15 @@
+DNA MUTATIONS ANALYSIS CONCLUSIONS (BASIC VOL2)
+==================================================
+
+MODEL RESULTS:
+- Accuracy: 0.600
+- F1-score: 0.400
+- ROC AUC: 0.644
+
+DATA:
+- Total samples: 100
+- Number of genes: 4
+- Number of hotspots: 18
+
+Logistic Regression model achieved satisfactory results
+in classifying pathogenic vs benign mutations.

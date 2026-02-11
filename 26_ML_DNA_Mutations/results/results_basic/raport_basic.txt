@@ -1,0 +1,86 @@
+# Projekt 2: Przewidywanie mutacji w sekwencjach
+**DNA związanych z chorobami genetycznymi**
+
+**Cel projektu**
+Celem jest stworzenie modelu klasyfikacyjnego, który określi, czy dana mutacja w
+sekwencji DNA jest patogenna.
+
+
+## Ocena eksploracji danych 
+
+- Wszystkie sekwencje mają długość 50 nukleotydów, to dobrze, bo **model ML łatwiej sobie radzi z jednorodnymi danymi**.
+- Brak wartości brakujących: wszystkie kolumny (Gene, DNA_Sequence, Mutation_Position, Reference_Base, Alternate_Base, Pathogenicity) są pełne – **nie trzeba imputować danych**.
+- Najczęstsze pozycje mutacji: pozycje 12, 39, 6, 34 pojawiają się najczęściej. To mogą być tzw. hotspoty mutacyjne – miejsca biologicznie istotne, gdzie mutacje częściej się zdarzają.
+- Najrzadsze pozycje mutacji: pozycje 15, 19, 25 – mutacje te są rzadkie, więc model może mieć trudności z ich poprawnym przewidywaniem.
+- Liczba mutacji w każdym genie: BRCA1 - 29, MYH7 - 27, TP53 - 26, CFTR -18.
+- Mutacje patogenne w genach: BRCA1 - 14, MYH7 - 11, TP53 -10, CFTR 6.
+  Oznacza to, że procent mutacji patogennych jest najwyższy w BRCA1 (48%), a najniższy w CFTR (33%). **Model może więc łatwiej rozpoznawać patogenne mutacje w BRCA1, a trudniej w CFTR**.
+- Najczęstsze mutacje patogenne: np. BRCA1 A -> T (4 razy), MYH7 C -> A (3 razy), TP53 C -> A (2 razy).
+- W ogóle zmiany typu G -> A, C -> A, T -> C, pojawiają się zarówno w mutacjach patogennych, jak i niepatogennych, ale częstotliwość się różni.
+  Wskazuje to, że **rodzaj zmiany nukleotydu jest istotną cechą predykcyjną i warto ją uwzględnić w modelu**.
+- Nukleotydy (sekwencje oraz referencyjne i zmienione) zostały **zakodowane binarnie, to czytelna forma dla modelu uczenia maszynowego**.
+- Dane z kolumny Mutation_Position zostały **przekształcone (Min-max scaling) do zakresu 0, 1 - aby model nie ignorował wartości binarnych (w które zostały przekształcone nukleotydy)**.
+
+
+## Ocena walidacji modelu
+
+- Podział próbek trening/test: **60/40** próbek - wyniki były słabe:
+  **Accuracy**: 0.6 - 60% poprawnych przewidywań.
+  **Precision dla klasy 1 (patogeniczne)**: 0.5 - połowa przewidywanych mutacji patogennych jest faktycznie patogenna.
+  **Recall dla klasy 1**: 0.5 - model wykrywa połowę prawdziwych mutacji patogennych.
+  **F1-score dla klasy 1**: 0.5 - umiarkowana skuteczność przy balansie precision i recall.
+  **Macież pomyłek**: 16 prawidłowych benign, 8 błędnie przewidzianych jako patogenne, 8 prawdziwych patogennych przewidzianych jako benign, 8 prawidłowych patogennych.
+  **ROC**: 0.583 - nieco lepiej niż losowe (0.5), ale daleko od idealnego (1.0).
+  **AUC**: 0.628 - umiarkowana separacja klas.
+
+
+## Interpretacja wyników modelu
+
+Model radzi sobie umiarkowanie, ale nie jest jeszcze dobry w przewidywaniu mutacji patogennych.
+
+**Możliwe przyczyny:**
+- Mało danych (100 próbek), więc model nie uczy się dobrze.
+- Nierówny rozkład mutacji patogennych i benign.
+- Cechy mogą nie uchwycać w pełni kontekstu biologicznego (np. sekwencje DNA wokół mutacji).
+
+**Sugestie poprawy:**
+- Zwiększenie zbioru danych, jeśli to możliwe.
+- Dodanie dodatkowych cech biologicznych (np. konserwacja regionu, struktura białka).
+- Wypróbowanie innych modeli (Random Forest, sieci neuronowe dla sekwencji).
+
+
+## Zmiana 1: Zmianie podziału próbek trening/test
+
+Wyniki po zmianie podziału próbek trening/test na **70/30** poprawiły się - takie proporcje lepiej działają na małym zbiorze. **Accuracy wzrosło z 0.6 do ~0.67**.
+
+### Wyniki po zmianie 1
+
+- **Accuracy**: 0.667 – czyli model poprawnie klasyfikuje ~2/3 próbek testowych.
+- **Precision**: ~0.58 – model wciąż ma problem z wykrywaniem mutacji patogennych, choć jest lepiej niż przy 60/40.
+- **Macież pomyłek**: 13 prawidłowo sklasyfikowanych benign, 7 prawidłowo sklasyfikowanych pathogenic, 5 błędnie zaklasyfikowanych benign jako pathogenic, 5 błędnie zaklasyfikowanych pathogenic jako benign
+- **ROC AUC**: 0.65–0.70 – przyzwoite, ale nie rewelacyjne. Model lepiej od losowego zgadywania, choć nadal sporo błędów.
+
+
+## Zmiana 2: Wprowadzenie walidacji krzyżowej
+
+Aby **poprawić wyniki spróbowałam walidacji krzyżowej** (cross-validation) zamiast jednego podziału.
+
+
+### Wyniki po zmianie 2:
+
+- **ROC AUC dla każdej iteracji:** 0.333, 0.594, 0.760, 0.677, 0.594
+  
+Widać dużą **zmienność** wyników między foldami.Najniższy wynik (0.333) jest bardzo słaby – model w tym foldzie niemal losowo klasyfikował przypadki.Najwyższy wynik (0.760) pokazuje, że w niektórych podziałach model radzi sobie całkiem dobrze.
+
+- **Średni ROC AUC:** około 0.592
+To oznacza **średnią skuteczność umiarkowaną** – lepszą niż losowe zgadywanie (0.5), ale daleko od idealnej klasyfikacji (1.0). Model ma tendencję do lepszego rozróżniania jednej klasy w niektórych podziałach danych, ale w innych radzi sobie słabo.
+
+- **Co może wpływać na te wahania:**
+  Mała liczba próbek – foldy mają po 20-30 przypadków, więc pojedyncze trudne przykłady mocno wpływają na wynik.Cecha mutacji może nie dostarczać wystarczająco mocnych sygnałów do jednoznacznej klasyfikacji.
+
+
+# Wnioski końcowe
+
+- **CZY MODEL JEST SKUTECZNY:** Model ma umiarkowaną skuteczność, ale jest niestabilny między podziałami.
+- **CO MOGŁOBY POPRAWIĆ JEGO DZIAŁANIE:** zwiększenie danych treningowych (więcej próbek), inne algorytmy (Random Forest, który często radiz sobie lepiej z małymi, nieregularnymi zbiorami), dodatkowe cechy (np. informacje kontekstowe o sekwencji DNA, hotspoty mutacji).
+- **CZY MOŻNA WYKORZYSTAĆ INNE ALGORYTMY:** tak, np. Random Forest, który często radzi sobie lepiej z małymi, nieregularnymi zbiorami) lub sieci neuronowe.

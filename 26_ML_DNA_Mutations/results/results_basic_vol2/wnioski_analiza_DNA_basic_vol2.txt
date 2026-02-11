@@ -1,0 +1,15 @@
+WNIOSKI Z ANALIZY DNA MUTATIONS (BASIC VOL2)
+==================================================
+
+WYNIKI MODELU:
+- Dokładność (Accuracy): 0.600
+- F1-score: 0.400
+- ROC AUC: 0.644
+
+DANE:
+- Całkowita liczba próbek: 100
+- Liczba genów: 4
+- Liczba hotspotów: 18
+
+Model Logistic Regression osiągnął zadowalające wyniki
+w klasyfikacji mutacji patogennych vs benign.

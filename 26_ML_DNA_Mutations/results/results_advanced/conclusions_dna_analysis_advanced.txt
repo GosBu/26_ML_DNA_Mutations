@@ -1,0 +1,53 @@
+=== DNA MUTATION PATHOGENICITY ANALYSIS CONCLUSIONS (ADVANCED) ===
+
+Date: 2026-02-11 23:35:44
+
+PROJECT GOAL:
+Build a classification model to determine whether a given mutation
+in DNA sequence is pathogenic (disease-causing).
+
+============================================================
+
+DATA SUMMARY:
+   • Number of samples: 100
+   • Number of genes: 4
+   • Pathogenic mutations: 41
+   • Benign mutations: 59
+   • Generated ML features: 84
+
+MACHINE LEARNING MODEL RESULTS:
+   • Best model: SVM
+   • Accuracy: 40.0%
+   • F1-score: 57.1%
+   • ROC AUC: 44.8%
+
+MUTATION HOTSPOTS:
+   • Identified hotspots: 16
+   • Hotspots are positions with high frequency of pathogenic mutations
+   • May indicate critical functional regions in genes
+
+KEY CONCLUSIONS:
+
+1. MEDIUM CLASSIFICATION QUALITY
+   Model requires further tuning, but shows potential.
+   More data or better features needed.
+
+2. MOST FREQUENTLY MUTATED GENE: BRCA1
+   Gene BRCA1 accounts for 29 mutations.
+   Requires special attention in clinical research.
+
+3. KEY PREDICTIVE FEATURES:
+   • K-mers (3-nucleotide patterns): local sequence structure
+   • GC content: DNA structure stability
+   • Mutation position: functional context
+   • Hotspot proximity: pathogenicity risk
+
+4. PRACTICAL APPLICATION:
+   Model can serve as:
+   • Support tool for clinical geneticists
+   • Prioritization system for mutations requiring further research
+   • Component of larger genomic analysis pipeline
+
+============================================================
+NOTE: Results require validation on independent datasets
+before application in clinical practice.

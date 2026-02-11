@@ -1,0 +1,70 @@
+=== NCBI ANALYSIS - TOP 3 MOST FREQUENTLY MUTATED GENES (ADVANCED) ===
+
+Analysis date: 2026-02-11 23:35:41
+
+1. GENE: BRCA1
+==================================================
+General statistics:
+   • Total mutations: 29
+   • Pathogenic mutations: 14
+   • Pathogenicity percentage: 48.3%
+
+Medical literature (NCBI):
+   • NCBI niedostępny
+
+Most frequent mutation positions:
+   • Position 6: 4 mutations
+   • Position 38: 3 mutations
+   • Position 44: 2 mutations
+
+Sample mutations in PubMed:
+   • Position 12 (A>T): 0 articles - pathogenic
+   • Position 21 (A>T): 0 articles - pathogenic
+   • Position 37 (C>A): 0 articles - pathogenic
+
+======================================================================
+
+2. GENE: MYH7
+==================================================
+General statistics:
+   • Total mutations: 27
+   • Pathogenic mutations: 11
+   • Pathogenicity percentage: 40.7%
+
+Medical literature (NCBI):
+   • NCBI niedostępny
+
+Most frequent mutation positions:
+   • Position 12: 4 mutations
+   • Position 7: 4 mutations
+   • Position 8: 2 mutations
+
+Sample mutations in PubMed:
+   • Position 8 (C>A): 0 articles - pathogenic
+   • Position 13 (G>C): 0 articles - pathogenic
+   • Position 12 (T>G): 0 articles - pathogenic
+
+======================================================================
+
+3. GENE: TP53
+==================================================
+General statistics:
+   • Total mutations: 26
+   • Pathogenic mutations: 10
+   • Pathogenicity percentage: 38.5%
+
+Medical literature (NCBI):
+   • NCBI niedostępny
+
+Most frequent mutation positions:
+   • Position 42: 2 mutations
+   • Position 23: 2 mutations
+   • Position 11: 2 mutations
+
+Sample mutations in PubMed:
+   • Position 21 (G>C): 0 articles - benign
+   • Position 36 (G>T): 0 articles - pathogenic
+   • Position 36 (A>C): 0 articles - pathogenic
+
+======================================================================
+

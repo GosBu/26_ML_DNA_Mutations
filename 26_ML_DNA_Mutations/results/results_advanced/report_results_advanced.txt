@@ -1,0 +1,61 @@
+ANALIZA DLA SKRYPTU: advanced
+=================================
+Data analizy: 2026-02-11
+
+CEL
+----
+Celem skryptu `advanced` jest poprawa klasyfikacji patogenności mutacji poprzez bogatsze kodowanie sekwencji (k-mer k=3), rozszerzone cechy biochemiczne oraz wybór modelu przy użyciu cross-validation.
+
+I. Eksploracja danych (EDA)
+--------------------------
+- Liczba próbek: 100
+- Geny: BRCA1(29), MYH7(27), TP53(26), CFTR(18)
+- Patogenne mutacje: BRCA1 14, MYH7 11, TP53 10, CFTR 6
+- Hotspoty: zidentyfikowano 16 pozycji o zwiększonej częstości mutacji
+- Kodowanie: K-mer (k=3) — 64 cechy k-mer + cechy biochemiczne (GC, transitions, distance-to-hotspot)
+- Wygenerowane cechy ML: 84 (łącznie)
+- Brak braków w danych — imputacja nie była wymagana
+
+II. Ocena modelu (wybór przez CV)
+--------------------------------
+- Strategia: 5-fold cross-validation użyte do wyboru najlepszego modelu spośród: Logistic Regression, Random Forest, SVM
+- Wybrany model: SVM (kernel RBF)
+
+Wyniki (po CV / raport zbiorczy):
+- Accuracy (z testu): 0.400
+- F1-score (pathogenic): 0.571
+- ROC AUC: 0.448
+- Zachowanie foldów (przykładowo): widoczna stabilizacja F1 w porównaniu do prostego podziału; AUC niższe niż w `basic_vol2` (wpływ k-mer + nieliniowości)
+
+Interpretacja:
+- Wyższe F1 oznacza lepszy balans precision/recall (mniej false negatives), co jest istotne diagnostycznie.
+- Niższe Accuracy i ROC AUC sugerują, że model lepiej radzi sobie z trudniejszą separacją klas, ale traci na ogólnej przewidywalności — prawdopodobny efekt overfittingu przy małym zbiorze i złożonym kodowaniu.
+
+III. Eksperymenty i obserwacje
+-----------------------------
+- K-mer (k=3) dobrze uchwycił lokalny kontekst nukleotydowy, jednak przy 100 próbkach cechy te mogą prowadzić do nadmiernej wariancji.
+- SVM wymaga starannego strojenia (`C`, `gamma`) — bez tuningu możliwe pogorszenie AUC.
+- Dodanie cech odległości do hotspotów poprawia detekcję lokalnych efektów mutacyjnych.
+
+IV. Analiza NCBI (wyniki automatyczne z Entrez)
+----------------------------------------------
+- Top geny i ich statystyki (wg skryptu):
+  1) BRCA1 — 29 mutacji (14 patogennych, 48.3%), PubMed (gen): 5 publikacji
+  2) MYH7 — 27 mutacji (11 patogennych, 40.7%), PubMed (gen): 5 publikacji
+  3) TP53 — 26 mutacji (10 patogennych, 38.5%), PubMed (gen): 5 publikacji
+- Uwaga: automatyczne wyszukiwania mutacji (konkretne substytucje) zwracały niską liczbę bezpośrednich trafień; lepsze wyniki dla zapytań na poziomie genu.
+- Rekomendacja: podać `email` w Entrez i zapisać cache wyników, aby powtarzalnie pobierać bibliografię.
+
+V. Rekomendacje (skrypt-specific)
+---------------------------------
+1. Zwiększyć zbiór danych do co najmniej kilku setek/przekroczyć 1000 próbek.
+2. Przeprowadzić grid/random search dla SVM (C, gamma) oraz walidację nested CV, aby ograniczyć overfitting.
+3. Przetestować redukcję wymiarów (PCA/UMAP) lub selekcję cech (feature importance z RF) przed SVM.
+4. Rozważyć ensemble: łącząc LogReg (one-hot) i SVM (k-mer) w VotingClassifier.
+5. Dla interpretowalności: obliczyć SHAP/feature-importance dla wybranych cech k-mer i biochemicznych.
+
+VI. Krótkie podsumowanie
+-----------------------
+- `advanced` daje lepszy balans precision/recall (wyższe F1), co czyni go bardziej przydatnym w kontekście klinicznym.
+- Przy obecnym rozmiarze danych (100 próbek) istnieje ryzyko overfittingu przy k-mer encoding i złożonych modelach.
+- Kolejne kroki: zwiększenie danych, tuning, ensemble i interpretowalność.

@@ -1,0 +1,53 @@
+=== WNIOSKI Z ANALIZY PATOGENNOŚCI MUTACJI DNA (ADVANCED) ===
+
+Data: 2026-02-08 23:33:03
+
+CEL PROJEKTU:
+Stworzenie modelu klasyfikacyjnego określającego, czy dana mutacja
+w sekwencji DNA jest patogenna (chorobotwórcza).
+
+============================================================
+
+PODSUMOWANIE DANYCH:
+   • Liczba próbek: 100
+   • Liczba genów: 4
+   • Patogenne mutacje: 41
+   • Łagodne mutacje: 59
+   • Wygenerowane cechy ML: 84
+
+WYNIKI MODELI UCZENIA MASZYNOWEGO:
+   • Najlepszy model: SVM
+   • Accuracy: 40.0%
+   • F1-score: 57.1%
+   • ROC AUC: 44.8%
+
+HOTSPOTY MUTACYJNE:
+   • Zidentyfikowane hotspoty: 16
+   • Hotspoty to pozycje o wysokiej częstości patogennych mutacji
+   • Mogą wskazywać na krytyczne regiony funkcjonalne genów
+
+NAJWAŻNIEJSZE WNIOSKI:
+
+1. ŚREDNIA JAKOŚĆ KLASYFIKACJI
+   Model wymaga dalszego dostrojenia, ale pokazuje potencjał.
+   Potrzeba więcej danych lub lepszych cech.
+
+2. NAJCZĘŚCIEJ MUTUJĄCY GEN: BRCA1
+   Gen BRCA1 odpowiada za 29 mutacji.
+   Wymaga szczególnej uwagi w badaniach klinicznych.
+
+3. KLUCZOWE CECHY PREDYKCYJNE:
+   • K-mery (3-nucleotide patterns): struktura lokalnej sekwencji
+   • Zawartość GC: stabilność struktury DNA
+   • Pozycja mutacji: kontekst funkcjonalny
+   • Bliskość hotspotów: ryzyko patogenności
+
+4. ZASTOSOWANIE PRAKTYCZNE:
+   Model może służyć jako:
+   • Narzędzie wspomagające genetyków klinicznych
+   • System priorytetyzacji mutacji do dalszych badań
+   • Komponent większego pipeline'u analiz genomicznych
+
+============================================================
+UWAGA: Wyniki wymagają walidacji na niezależnych zbiorach danych
+przed zastosowaniem w praktyce klinicznej.
