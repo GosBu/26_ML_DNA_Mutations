@@ -6,11 +6,11 @@ Machine Learning system for predicting DNA mutation pathogenicity in genetic dis
 
 **Goal:** Build classification models to **predict whether a DNA mutation is pathogenic or benign**.
 
-This project applies **machine learning techniques** to analyze point mutations in DNA sequences and predict their impact on health. Critical application for personalized medicine and genetic diagnostics.
+This project applies **machine learning techniques** to analyse point mutations in DNA sequences and predict their impact on health. Critical application for personalised medicine and genetic diagnostics.
 
 **Key Features:**
 - Two analysis pipelines: Basic Vol2 (Logistic Regression) & Advanced (Multi-model with CV)
-- Comprehensive visualization suite (8+ plots per analysis)
+- Comprehensive visualisation suite (8+ plots per analysis)
 - K-mer feature engineering for sequence context
 - NCBI PubMed integration for literature validation
 - Mutation hotspot analysis per gene
@@ -92,7 +92,7 @@ This project applies **machine learning techniques** to analyze point mutations 
 | **Models** | Logistic Regression, Random Forest, SVM (auto-select) |
 | **Encoding** | K-mer (k=3, 64 features) + biochemical + hotspot proximity |
 | **Validation** | 5-fold Cross-Validation |
-| **Features** | 84 total (optimized feature engineering) |
+| **Features** | 84 total (optimised feature engineering) |
 | **Outputs** | CV plots + feature importance + NCBI top 3 genes + hotspot analysis |
 
 **Performance:** Accuracy ~40%, F1 ~57%, ROC AUC ~45% (SVM winner)
@@ -173,12 +173,12 @@ python dna_mutations_analysis_advanced.py
 
 ### Configuration
 
-Edit JSON files to customize:
-- `config_basic_vol2.json` - Model parameters, visualization settings
+Edit JSON files to customise:
+- `config_basic_vol2.json` - Model parameters, visualisation settings
 - `config_advanced.json` - K-mer size, CV folds, thresholds
 
 ### NCBI API Setup
-When prompted, provide your email for NCBI API access or press ENTER to use default from config.
+When prompted, provide your email for NCBI API access or press ENTER to use the default from config.
 
 ### Execution Time
 - **Basic Vol2**: ~1 minute
@@ -207,7 +207,7 @@ When prompted, provide your email for NCBI API access or press ENTER to use defa
 ### Output Files
 
 Each run generates:
-- **8-12 visualization plots** (PNG format) with English labels
+- **8-12 visualisation plots** (PNG format) with English labels
 - **NCBI analysis report** (`ncbi_analysis_*.txt`)
 - **Conclusions summary** (`conclusions_dna_analysis_*.txt`)
 - **Comprehensive board** - All plots in single dashboard
@@ -246,14 +246,6 @@ Contributions welcome! Areas for improvement:
 **Project:** DNA Mutation Pathogenicity Predictor  
 **Date:** February 2026  
 **Technologies:** Python, scikit-learn, Biopython, matplotlib
-
----
-
-## Acknowledgments
-
-- NCBI for PubMed API access
-- scikit-learn community
-- Bioinformatics research community
 
 ---
 
